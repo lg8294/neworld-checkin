@@ -1,0 +1,33 @@
+name: Neworld check-in
+
+on:
+  schedule:
+    # 北京时间 20:00 = UTC 12:00
+    - cron: '0 12 * * *'
+  workflow_dispatch:
+
+concurrency:
+  group: neworld-checkin
+  cancel-in-progress: false
+
+jobs:
+  checkin:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - run: npm ci
+
+      - name: Run check-in
+        env:
+          ACCOUNTS_JSON: ${{ secrets.ACCOUNTS_JSON }}
+          NEWORD_FINGERPRINT: ${{ secrets.NEWORD_FINGERPRINT }}
+          DINGTALK_WEBHOOK: ${{ secrets.DINGTALK_WEBHOOK }}
+          DINGTALK_SECRET: ${{ secrets.DINGTALK_SECRET }}
+          HTTP_PROXY: ${{ secrets.HTTP_PROXY }}
+        run: npm start

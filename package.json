@@ -1,0 +1,17 @@
+{
+  "name": "neworld-checkin",
+  "version": "1.0.0",
+  "description": "Neworld daily check-in script",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "node index.js"
+  },
+  "dependencies": {
+    "axios": "^1.6.0",
+    "axios-cookiejar-support": "^6.0.5",
+    "dotenv": "^16.3.1",
+    "node-schedule": "^2.1.1",
+    "tough-cookie": "^6.0.0"
+  }
+}
