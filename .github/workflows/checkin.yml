@@ -25,9 +25,9 @@ jobs:
 
       - name: Run check-in
         env:
-          ACCOUNTS_JSON: ${{ secrets.ACCOUNTS_JSON }}
-          NEWORD_FINGERPRINT: ${{ secrets.NEWORD_FINGERPRINT }}
-          DINGTALK_WEBHOOK: ${{ secrets.DINGTALK_WEBHOOK }}
-          DINGTALK_SECRET: ${{ secrets.DINGTALK_SECRET }}
-          HTTP_PROXY: ${{ secrets.HTTP_PROXY }}
+          ACCOUNTS_JSON: ${{ secrets.ACCOUNTS_JSON || vars.ACCOUNTS_JSON }}
+          NEWORD_FINGERPRINT: ${{ secrets.NEWORD_FINGERPRINT || vars.NEWORD_FINGERPRINT }}
+          DINGTALK_WEBHOOK: ${{ secrets.DINGTALK_WEBHOOK || vars.DINGTALK_WEBHOOK }}
+          DINGTALK_SECRET: ${{ secrets.DINGTALK_SECRET || vars.DINGTALK_SECRET }}
+          HTTP_PROXY: ${{ secrets.HTTP_PROXY || vars.HTTP_PROXY }}
         run: npm start
