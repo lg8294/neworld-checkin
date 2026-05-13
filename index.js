@@ -204,7 +204,7 @@ async function checkIn(account, password, fingerprint) {
     console.log(`[${account}] 用户页面获取: ${userRes.status === 200 ? '成功' : '失败'}`);
 
     const checkinRes = await s.post(`${BASE_URL}/user/checkin`,
-      {},
+      { 'checkin_type' : 'time' },
       {
         headers: {
           'accept': 'application/json, text/javascript, */*; q=0.01',
